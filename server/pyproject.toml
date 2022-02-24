@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "vine-server"
+version = "0.1.0"
+description = ""
+authors = ["Matt <MGeiger410@me.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+ariadne = "^0.14.1"
+uvicorn = "^0.17.5"
+websockets = "^10.2"
+redis = "^4.1.4"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.931"
+pylint = "^2.12.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,57 @@
+type User {
+	id: ID!
+	username: String!
+	events: [Event!]
+}
+
+type Event {
+	id: ID!
+	userId: ID!
+	message: String!
+	level: EventLevel!
+	createdAt: String! 
+}
+
+enum EventLevel {
+	INFO
+	WARN
+	ALERT
+}
+
+type createUserResult {
+	user: User
+	success: Boolean!
+	errors: [String]
+}
+
+type createEventResult {
+	event: Event
+	success: Boolean!
+	errors: [String]
+}
+
+type eventsResult {
+	events: [Event]
+	success: Boolean!
+	errors: [String]
+}
+
+type Query {
+	events(userId: String!, level: EventLevel): eventsResult
+	userId(username: String!): String
+}
+
+type Mutation {
+	createUser(username: String!): createUserResult
+	createEvent(userId: String!, level: EventLevel!, message: String!): createEventResult
+}
+
+type Subscription {
+	newEvent(userId: String): Event
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
